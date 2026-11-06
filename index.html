@@ -1,101 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IfElse Quiz · UC7</title>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito:wght@600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
-  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IfElse Quiz · UC7</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito:wght@600;800;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- INÍCIO -->
-  <section class="screen" id="sHome">
-    <h1 class="logo">if<span>/</span>else Quiz</h1>
-    <p class="sub">UC7 · Interface Web · Senac</p>
-    <div class="card">
-      <h2>Entrar no jogo</h2>
-      <input id="pinIn" inputmode="numeric" maxlength="6" placeholder="PIN do jogo" autocomplete="off">
-      <button class="big" id="goJoin">Entrar</button>
-      <p class="err" id="homeErr"></p>
-    </div>
-    <button class="big alt" id="goHost">Sou o professor: criar jogo</button>
-  </section>
 
-  <!-- PERFIL DO ALUNO -->
-  <section class="screen hidden" id="sProfile">
-    <h1 class="logo" style="font-size:2.2rem">Monte seu avatar</h1>
-    <div class="card">
-      <div class="preview">
-        <div class="avatar" id="pvAv"></div><b id="pvName">Seu nome</b>
-      </div>
-      <input id="nameIn" maxlength="14" placeholder="Seu apelido" autocomplete="off">
-      <div class="picker" id="emojiPick"></div>
-      <div class="picker colors" id="colorPick"></div>
-      <button class="big" id="doJoin">Pronto!</button>
-      <p class="err" id="profErr"></p>
-    </div>
-  </section>
+<!-- INÍCIO -->
+<section class="screen" id="sHome">
+  <h1 class="logo">if<span>/</span>else Quiz</h1>
+  <p class="sub">UC7 · Interface Web · Senac</p>
+  <div class="card">
+    <h2>Entrar no jogo</h2>
+    <input id="pinIn" inputmode="numeric" maxlength="6" placeholder="PIN do jogo" autocomplete="off">
+    <button class="big" id="goJoin">Entrar</button>
+    <p class="err" id="homeErr"></p>
+  </div>
+  <button class="big alt" id="goHost">Sou o professor: criar jogo</button>
+</section>
 
-  <!-- ALUNO -->
-  <section class="screen hidden" id="sPlayer">
-    <div class="me" id="meTag"></div>
-    <div class="feedback" id="pWait">
-      <div class="icon">⏳</div>
-      <h2 id="pWaitT">Você entrou!</h2>
-      <p id="pWaitS">Olhe para o telão e aguarde o professor começar.</p>
-    </div>
-    <div class="pgrid hidden" id="pGrid"></div>
-    <div class="feedback hidden" id="pFeed">
-      <div class="icon" id="fIcon"></div>
-      <h2 id="fTitle"></h2>
-      <div class="pts" id="fPts"></div>
-      <p id="fRank"></p>
-    </div>
-  </section>
+<!-- PERFIL DO ALUNO -->
+<section class="screen hidden" id="sProfile">
+  <h1 class="logo" style="font-size:2.2rem">Monte seu avatar</h1>
+  <div class="card">
+    <div class="preview"><div class="avatar" id="pvAv"></div><b id="pvName">Seu nome</b></div>
+    <input id="nameIn" maxlength="14" placeholder="Seu apelido" autocomplete="off">
+    <div class="picker" id="emojiPick"></div>
+    <div class="picker colors" id="colorPick"></div>
+    <button class="big" id="doJoin">Pronto!</button>
+    <p class="err" id="profErr"></p>
+  </div>
+</section>
 
-  <!-- PROFESSOR -->
-  <section class="screen hidden" id="sHost">
-    <div id="hLobby" class="screen" style="padding:0;width:100%">
-      <div class="topbar">
-        <h1 class="logo" style="font-size:2.4rem">if<span>/</span>else Quiz</h1>
-        <div class="pinbox"><small>PIN DO JOGO</small><b id="pinOut">······</b></div>
-      </div>
-      <p class="sub" id="hostInfo">Abram este mesmo site no celular, toquem em "Entrar" e digitem o PIN.</p>
-      <div class="count" id="pCount">0 jogadores</div>
-      <div class="lobby" id="lobby"></div>
-      <button class="big alt" id="startBtn" disabled>Começar</button>
-    </div>
+<!-- ALUNO -->
+<section class="screen hidden" id="sPlayer">
+  <div class="me" id="meTag"></div>
+  <div class="feedback" id="pWait">
+    <div class="icon">⏳</div>
+    <h2 id="pWaitT">Você entrou!</h2>
+    <p id="pWaitS">Olhe para o telão e aguarde o professor começar.</p>
+  </div>
+  <div class="pgrid hidden" id="pGrid"></div>
+  <div class="feedback hidden" id="pFeed">
+    <div class="icon" id="fIcon"></div>
+    <h2 id="fTitle"></h2>
+    <div class="pts" id="fPts"></div>
+    <p id="fRank"></p>
+  </div>
+</section>
 
-    <div id="hQ" class="screen hidden" style="padding:0;width:100%">
-      <div class="qhead">
-        <div class="timer" id="tOut">40</div>
-        <p class="qtitle" id="qTitle"></p>
-        <div class="answered"><b id="aCount">0</b>respostas</div>
-      </div>
-      <pre class="code" id="qCode"></pre>
-      <div class="opts" id="qOpts"></div>
-      <div class="why hidden" id="qWhy"></div>
-      <button class="big alt hidden" id="toBoard">Ver placar</button>
+<!-- PROFESSOR -->
+<section class="screen hidden" id="sHost">
+  <div id="hLobby" class="screen" style="padding:0;width:100%">
+    <div class="topbar">
+      <h1 class="logo" style="font-size:2.4rem">if<span>/</span>else Quiz</h1>
+      <div class="pinbox"><small>PIN DO JOGO</small><b id="pinOut">······</b></div>
     </div>
+    <p class="sub" id="hostInfo">Abram este mesmo site no celular, toquem em "Entrar" e digitem o PIN.</p>
+    <div class="count" id="pCount">0 jogadores</div>
+    <div class="lobby" id="lobby"></div>
+    <button class="big alt" id="startBtn" disabled>Começar</button>
+  </div>
 
-    <div id="hBoard" class="screen hidden" style="padding:0;width:100%">
-      <h1 class="logo" style="font-size:2.4rem">Placar</h1>
-      <div class="board" id="board"></div>
-      <button class="big alt" id="nextQ">Próxima pergunta</button>
+  <div id="hQ" class="screen hidden" style="padding:0;width:100%">
+    <div class="qhead">
+      <div class="timer" id="tOut">40</div>
+      <p class="qtitle" id="qTitle"></p>
+      <div class="answered"><b id="aCount">0</b>respostas</div>
     </div>
+    <pre class="code" id="qCode"></pre>
+    <div class="opts" id="qOpts"></div>
+    <div class="why hidden" id="qWhy"></div>
+    <button class="big alt hidden" id="toBoard">Ver placar</button>
+  </div>
 
-    <div id="hEnd" class="screen hidden" style="padding:0;width:100%">
-      <h1 class="logo" style="font-size:2.6rem">Pódio 🏆</h1>
-      <div class="podium" id="podium"></div>
-      <div class="board" id="finalBoard"></div>
-    </div>
-  </section>
+  <div id="hBoard" class="screen hidden" style="padding:0;width:100%">
+    <h1 class="logo" style="font-size:2.4rem">Placar</h1>
+    <div class="board" id="board"></div>
+    <button class="big alt" id="nextQ">Próxima pergunta</button>
+  </div>
 
-  <script href="script.js"></script>
+  <div id="hEnd" class="screen hidden" style="padding:0;width:100%">
+    <h1 class="logo" style="font-size:2.6rem">Pódio 🏆</h1>
+    <div class="podium" id="podium"></div>
+    <div class="board" id="finalBoard"></div>
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
-
 </html>
